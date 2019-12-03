@@ -2,4 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    nome = 'Gabriel'
+    contexto = {
+        'nome': nome
+    }
+    return render(request, 'home.html', contexto)
