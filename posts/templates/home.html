@@ -1,12 +1,26 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{%static 'estilo.css'%}">
     <title>Document</title>
 </head>
 <body>
-    <h1>Bem-vindx ao Blog, {{nome}}</h1>
+    {% if nome == 'groger' %}
+        <h1>Bem-vindx ao Blog, {{nome}} :(((((</h1>
+    {% elif nome == 'batatinha' %}
+        <h2>XABLAU</h2>
+    {% else %}
+        <p>Bem-vindx ao Blog, {{nome}} :)))))</p>    
+    {% endif %}
+
+    <ul>
+    {% for item in lista %}
+        <li>{{item}}</li>
+    {% endfor %}
+    </ul>
 </body>
 </html>
