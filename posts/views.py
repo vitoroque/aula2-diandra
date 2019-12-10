@@ -16,3 +16,9 @@ def home(request):
         'lista': lista
     }
     return render(request, 'home.html', contexto)
+
+def post(request):
+    return render(request, 'post.html')
+
+def cadastro(request):
+    return render(request, 'cadastro.html')
