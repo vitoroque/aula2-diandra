@@ -1,24 +1,25 @@
 from django.shortcuts import render
+from .form import PedidoForm
 
 # Create your views here.
 def home(request):
-    nome = 'groger'
-    # posts = {
-    #     'Gabriel' : 'Narnia para projetos ágeis',
-    #     'Vinicius': 'IA para comer biscoitos',
-    #     'Ana Lu': 'BTS é muito bondoso',
-    #     'Downtown': 'Não seja maníaco'
-    # }
-
-    lista = ['Roré', 'Generro', 'Anlu', 'DOwnT0wn']
-    contexto = {
-        'nome': nome,
-        'lista': lista
-    }
     return render(request, 'home.html', contexto)
 
 def post(request):
     return render(request, 'post.html')
 
 def cadastro(request):
-    return render(request, 'cadastro.html')
+    forms = PedidoForm(request.POST or None)
+    if forms.is_valid():
+        forms.save()
+        context = {
+            "msg" : "Pedido deu Certo!!"
+        }
+         return render(request, 'cadastro.html', context)
+
+    context = {
+        "formulario" : forms 
+    }     
+    return render(request, 'cadastro.html', context)
+    
+   
